@@ -1,5 +1,6 @@
-package com.learning.Spring_Redis.service;
+package com.learning.Spring_Boot.redis;
 
+import com.learning.Spring_Boot.service.DistributedLockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;

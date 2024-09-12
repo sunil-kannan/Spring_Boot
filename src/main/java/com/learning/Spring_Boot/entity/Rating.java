@@ -1,7 +1,6 @@
-package com.learning.Spring_Redis.entity;
+package com.learning.Spring_Boot.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.learning.Spring_Redis.controller.pubsub;
+package com.learning.Spring_Boot.redis.pubsub;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

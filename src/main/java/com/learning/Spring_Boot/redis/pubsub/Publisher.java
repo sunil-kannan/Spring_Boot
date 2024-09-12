@@ -1,7 +1,7 @@
-package com.learning.Spring_Redis.controller.pubsub;
+package com.learning.Spring_Boot.redis.pubsub;
 
-import com.learning.Spring_Redis.entity.Rating;
-import com.learning.Spring_Redis.repository.RatingRepository;
+import com.learning.Spring_Boot.entity.Rating;
+import com.learning.Spring_Boot.redis.RatingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;

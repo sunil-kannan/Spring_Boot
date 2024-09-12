@@ -1,4 +1,4 @@
-package com.learning.Spring_Redis.service;
+package com.learning.Spring_Boot.service;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
