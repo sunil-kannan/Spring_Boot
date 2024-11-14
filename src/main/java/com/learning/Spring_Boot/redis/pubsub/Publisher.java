@@ -1,6 +1,6 @@
 package com.learning.Spring_Boot.redis.pubsub;
 
-import com.learning.Spring_Boot.entity.Rating;
+import com.learning.Spring_Boot.redis.entity.Rating;
 import com.learning.Spring_Boot.redis.RatingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

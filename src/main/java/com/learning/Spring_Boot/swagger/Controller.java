@@ -1,6 +1,6 @@
 package com.learning.Spring_Boot.swagger;
 
-import com.learning.Spring_Boot.entity.Rating;
+import com.learning.Spring_Boot.redis.entity.Rating;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -11,7 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@RestController("swaggerController")
 @RequestMapping("swagger")
 public class Controller {
     private static final String SWAGGER_TAG = "Swagger API";

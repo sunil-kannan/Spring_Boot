@@ -33,4 +33,8 @@ public class DistributedLockService {
         redisTemplate.opsForValue().set(STOCK_KEY, 10);
         System.out.println("Stock initialized to 10.");
     }
+
+
+
+
 }

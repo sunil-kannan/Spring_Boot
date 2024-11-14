@@ -1,16 +1,11 @@
 package com.learning.Spring_Boot.redis;
 
 import com.learning.Spring_Boot.common.Idempotent;
-import com.learning.Spring_Boot.entity.Rating;
+import com.learning.Spring_Boot.redis.entity.Rating;
+import com.learning.Spring_Boot.redis.entity.RatingDto;
 import com.learning.Spring_Boot.response.CustomResponse;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
+import lombok.Setter;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.annotation.CacheEvict;
@@ -24,10 +19,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("redis")
+@RequestMapping(value = "redis", produces = MediaType.APPLICATION_JSON_VALUE)
 public class RatingController {
     @Autowired
     private RatingRepository ratingRepository;
+    @Setter
+    @Autowired
+    private ModelMapper modelMapper;
+
+    public RatingDto ratingtoRatingDto(Rating rating){
+        return (RatingDto) modelMapper.typeMap(Rating.class, RatingDto.class)
+                .addMappings(mapper -> {
+                    mapper.map(Rating::getUsername, RatingDto::setName);
+                });
+    }
+
     @Autowired
     private OrderService orderService;
 
@@ -48,6 +54,7 @@ public class RatingController {
         return ratingRepository.findAll();
     }
 
+
     @GetMapping("/rating/{id}")
     @Cacheable(value = "rating", key = "#id", unless = "#result == null")
     public Rating getRatingById(@PathVariable long id) {
@@ -56,7 +63,7 @@ public class RatingController {
     }
 
     @PostMapping("/rating")
-    @Idempotent
+//    @Idempotent
     public Rating saveRating(@RequestBody Rating rating) {
         return ratingRepository.save(rating);
     }
@@ -76,6 +83,8 @@ public class RatingController {
         ratingRepository.deleteById(id);
         return true;
     }
+
+
 
     @GetMapping("/placeOrder")
     public String placeOrder(@RequestParam String orderId) {
